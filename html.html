@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ATIVIDADE_29.08.2022</title>
+</head>
+<style>
+    body{
+        height: 150vh;
+    }
+    header {
+        text-align: center;
+        font-size: 25px;
+    }
+
+    #frase_name {
+        text-align: center;
+        margin: 25px;
+    }
+
+    #imagens_produtos img {
+        width: 200px;
+        height: 150px;
+    }
+
+    #imagens_produtos img:hover {
+        width: 201px;
+        height: 153px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #imagens_produtos {
+        display: none;
+        margin: auto;
+        width: 1100px;
+        
+    }
+
+    .butao_resultado {
+
+        display: none;
+
+    }
+
+    .quadro {
+        border: solid red 2px;
+        text-align: center;
+        max-width: 300px;
+        padding: 10px;
+    }
+
+    #resultado {
+
+        margin: auto;
+        margin-top: 35px;
+        text-align: center;
+        font-size: 25px;
+    }
+</style>
+
+<body>
+    <header>
+        <H3>BEM VINDO A MEU RESTAURANTE</H3>
+        <button onclick="myFunction()">CLIQUE AQUI PARA INICIARMOS O ATENDIMENTO</button>
+    </header>
+    <p id="frase_name"></p>
+
+    <div id="imagens_produtos">
+        <div class="quadro">
+            <p>Porção De Batatas Fritas por 3.50 R$</p>
+            <img src="img/batata.jpg">
+            <p></p>
+            <button onclick="batatas()">+</button>
+            <button onclick="batatas()">-</button>
+            <div>
+                <p id="qtdbatata"></p>
+                <p id="vlmbatata"></p>
+            </div>
+
+        </div>
+        <div class="quadro">
+            <P> Coxinha de Frango por 3.00 R$ </P>
+            <img src="img/coxinha.jpg">
+            <p></p>
+            <button onclick="coxinhas()">+</button>
+            <button onclick="coxinhas()">-</button>
+            <div>
+                <p id="qtdcoxinha"></p>
+                <p id="vlmcoxinha"></p>
+            </div>
+        </div>
+
+
+        <div class="quadro">
+            <p> Hamburger Completo por 6.50 R$</p>
+            <img src="img/hamburguer.jpg">
+            <p></p>
+            <button onclick="hamburges()">+</button>
+            <button onclick="coxinhas()">-</button>
+            <div>
+                <p id="qtdhamburge"></p>
+                <p id="vlmhamburge"></p>
+            </div>
+        </div>
+
+        <div class="quadro">
+            <p> Pastel de Carne Moida por 5.50 R$</p>
+            <img src="img/pastel.jpg">
+            <p></p>
+
+            <button onclick="pastels()">+</button>
+            <button onclick="pastels()">-</button>
+            <div>
+                <p id="qtdpastel"></p>
+                <p id="vlmpastel"></p>
+            </div>
+
+        </div>
+
+        <div class="quadro">
+            <P>Pizza Grande Calabreza por 9.00 R$</P>
+            <img src="img/pízza.jpg">
+            <p></p>
+            <button onclick="pizzas()">+</button>
+            <button onclick="pizzas()">-</button>
+            <div>
+                <p id="qtdpizza"></p>
+                <p id="vlmpizza"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <button class="butao_resultado" id="resultado" onclick="result()">
+        Clique aqui para visualizar o Resultado
+    </button>
+
+
+
+
+
+
+
+    <script>
+
+
+        var coxinha = 0;
+        var valorcoxinha = 0;
+        var hamburge = 0;
+        var valorhamburge = 0;
+        var pastel = 0;
+        var valorpastel = 0;
+        var pizza = 0;
+        var valorpizza = 0;
+        var batata = 0;
+        var valorbatata = 0;
+        var qtdbatata = document.getElementById('qtdbatata');
+        var vlmbatata = document.getElementById('vlmbatata');
+        var qtdcoxinha = document.getElementById('qtdcoxinha');
+        var vlmcoxinha = document.getElementById('vlmcoxinha');
+        var qtdhamburge = document.getElementById('qtdhamburge');
+        var vlmhamburge = document.getElementById('vlmhamburge');
+        var qtdpastel = document.getElementById('qtdpastel');
+        var vlmpastel = document.getElementById('vlmpastel');
+        var qtdpizza = document.getElementById('qtdpizza');
+        var vlmpizza = document.getElementById('vlmpizza');
+        var resultado = document.getElementById('resultado');
+        var somatorio = Number(valorbatata + valorhamburge + valorpastel + valorpizza + valorcoxinha);
+
+        function myFunction() {
+            let name = window.prompt('Digite Seu Nome: ');
+            let frasename = document.getElementById('frase_name');
+            frasename.innerHTML = `<p>Seja Muito Bem Vindo ao Nosso Restaurante <strong>${name}</strong> <br> Escolha a Opção (+) Para Acrescentar e (-) para desfazer a Quantidade !</p>`
+            let cardapio = document.getElementById('imagens_produtos');
+            cardapio = cardapio.style.display = "flex";
+            let resultado = document.getElementById('resultado');
+            resultado = resultado.style.display = "flex";
+
+        }
+
+
+        function batatas() {
+            batata++;
+            valorbatata = valorbatata + 3.50;
+            qtdbatata.innerHTML = `<p>Quantidade de Porção de Batata : ${batata}</p>`;
+            vlmbatata.innerHTML = `<p>Preço Total: ${valorbatata} R$ Reais</p>`;
+        }
+        function coxinhas() {
+            coxinha++;
+            valorcoxinha = valorcoxinha + 3.00;
+            qtdcoxinha.innerHTML = `<p>Quantidade de Coxinha : ${coxinha}</p>`;
+            vlmcoxinha.innerHTML = `<p>Preço Total: ${valorcoxinha} R$ Reais</p>`;
+        }
+        function hamburges() {
+            hamburge++;
+            valorhamburge = valorhamburge + 6.50;
+            qtdhamburge.innerHTML = `<p>Quantidade de Hamburgers : ${hamburge}</p>`;
+            vlmhamburge.innerHTML = `<p>Preço Total: ${valorhamburge} R$ Reais</p>`;
+        }
+        function pastels() {
+            pastel++;
+            valorpastel = valorpastel + 5.50;
+            qtdpastel.innerHTML = `<p>Quantidade de Pastels : ${pastel}</p>`;
+            vlmpastel.innerHTML = `<p>Preço Total: ${valorpastel} R$ Reais</p>`;
+        }
+        function pizzas() {
+            pizza++;
+            valorpizza = valorpizza + 9.00;
+            qtdpizza.innerHTML = `<p>Quantidade de Pizzas : ${pizza}</p>`;
+            vlmpizza.innerHTML = `<p>PREÇO Total: ${valorpizza} R$ Reais</p>`;
+        }
+
+
+
+        function result() {
+
+            resultado.innerHTML = `<p>O Resultado dos seus pedidos foi: ${somatorio}</p>`;
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
