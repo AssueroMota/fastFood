@@ -6,9 +6,10 @@
     <title>ATIVIDADE_29.08.2022</title>
 </head>
 <style>
-    body{
-        height: 150vh;
+    body {
+        height: 180vh;
     }
+
     header {
         text-align: center;
         font-size: 25px;
@@ -26,7 +27,7 @@
 
     #imagens_produtos img:hover {
         width: 201px;
-        height: 153px;
+        height: 151px;
         transition: all 0.3s ease-in-out;
     }
 
@@ -34,7 +35,7 @@
         display: none;
         margin: auto;
         width: 1100px;
-        
+
     }
 
     .butao_resultado {
@@ -57,6 +58,19 @@
         text-align: center;
         font-size: 25px;
     }
+
+    #garcondobem {
+        width: 380px;
+        margin: auto;
+        display: none;
+    }
+
+    .garcon button {
+        width: 380px;
+        margin-top: 40px;
+        text-align: center;
+        height: 30px;
+    }
 </style>
 
 <body>
@@ -72,7 +86,7 @@
             <img src="img/batata.jpg">
             <p></p>
             <button onclick="batatas()">+</button>
-            <button onclick="batatas()">-</button>
+            <button onclick="menosbatatas()">-</button>
             <div>
                 <p id="qtdbatata"></p>
                 <p id="vlmbatata"></p>
@@ -84,7 +98,7 @@
             <img src="img/coxinha.jpg">
             <p></p>
             <button onclick="coxinhas()">+</button>
-            <button onclick="coxinhas()">-</button>
+            <button onclick="menoscoxinhas()">-</button>
             <div>
                 <p id="qtdcoxinha"></p>
                 <p id="vlmcoxinha"></p>
@@ -97,7 +111,7 @@
             <img src="img/hamburguer.jpg">
             <p></p>
             <button onclick="hamburges()">+</button>
-            <button onclick="coxinhas()">-</button>
+            <button onclick="menoshamburges()">-</button>
             <div>
                 <p id="qtdhamburge"></p>
                 <p id="vlmhamburge"></p>
@@ -110,7 +124,7 @@
             <p></p>
 
             <button onclick="pastels()">+</button>
-            <button onclick="pastels()">-</button>
+            <button onclick="menospastels()">-</button>
             <div>
                 <p id="qtdpastel"></p>
                 <p id="vlmpastel"></p>
@@ -123,7 +137,7 @@
             <img src="img/pízza.jpg">
             <p></p>
             <button onclick="pizzas()">+</button>
-            <button onclick="pizzas()">-</button>
+            <button onclick="menospizzas()">-</button>
             <div>
                 <p id="qtdpizza"></p>
                 <p id="vlmpizza"></p>
@@ -137,6 +151,11 @@
     </button>
 
 
+    <div class="garcon" id="garcondobem">
+        <img src="img/garcon.jpg" width="400px">
+        <button onclick="pagamento()">Fazer Pagamento</button>
+        <div id="resultado_garcon"></div>
+    </div>
 
 
 
@@ -167,6 +186,7 @@
         var vlmpizza = document.getElementById('vlmpizza');
         var resultado = document.getElementById('resultado');
         var somatorio = Number(valorbatata + valorhamburge + valorpastel + valorpizza + valorcoxinha);
+        var garcondopagamento = document.getElementById('garcondobem');
 
         function myFunction() {
             let name = window.prompt('Digite Seu Nome: ');
@@ -184,41 +204,91 @@
             batata++;
             valorbatata = valorbatata + 3.50;
             qtdbatata.innerHTML = `<p>Quantidade de Porção de Batata : ${batata}</p>`;
-            vlmbatata.innerHTML = `<p>Preço Total: ${valorbatata} R$ Reais</p>`;
+            vlmbatata.innerHTML = `<p>Preço Total: ${valorbatata} Reais</p>`;
         }
+        function menosbatatas() {
+            batata--;
+            valorbatata = valorbatata - 3.50;
+            qtdbatata.innerHTML = `<p>Quantidade de Porção de Batata : ${batata}</p>`;
+            vlmbatata.innerHTML = `<p>Preço Total: ${valorbatata} Reais</p>`;
+        }
+
         function coxinhas() {
             coxinha++;
             valorcoxinha = valorcoxinha + 3.00;
             qtdcoxinha.innerHTML = `<p>Quantidade de Coxinha : ${coxinha}</p>`;
-            vlmcoxinha.innerHTML = `<p>Preço Total: ${valorcoxinha} R$ Reais</p>`;
+            vlmcoxinha.innerHTML = `<p>Preço Total: ${valorcoxinha} Reais</p>`;
+        }
+
+        function menoscoxinhas() {
+            coxinha--;
+            valorcoxinha = valorcoxinha - 3.00;
+            qtdcoxinha.innerHTML = `<p>Quantidade de Coxinha : ${coxinha}</p>`;
+            vlmcoxinha.innerHTML = `<p>Preço Total: ${valorcoxinha} Reais</p>`;
         }
         function hamburges() {
             hamburge++;
             valorhamburge = valorhamburge + 6.50;
             qtdhamburge.innerHTML = `<p>Quantidade de Hamburgers : ${hamburge}</p>`;
-            vlmhamburge.innerHTML = `<p>Preço Total: ${valorhamburge} R$ Reais</p>`;
+            vlmhamburge.innerHTML = `<p>Preço Total: ${valorhamburge} Reais</p>`;
+        }
+        function menoshamburges() {
+            hamburge--;
+            valorhamburge = valorhamburge - 6.50;
+            qtdhamburge.innerHTML = `<p>Quantidade de Hamburgers : ${hamburge}</p>`;
+            vlmhamburge.innerHTML = `<p>Preço Total: ${valorhamburge} Reais</p>`;
         }
         function pastels() {
             pastel++;
             valorpastel = valorpastel + 5.50;
             qtdpastel.innerHTML = `<p>Quantidade de Pastels : ${pastel}</p>`;
-            vlmpastel.innerHTML = `<p>Preço Total: ${valorpastel} R$ Reais</p>`;
+            vlmpastel.innerHTML = `<p>Preço Total: ${valorpastel} Reais</p>`;
+        }
+        function menospastels() {
+            pastel--;
+            valorpastel = valorpastel - 5.50;
+            qtdpastel.innerHTML = `<p>Quantidade de Pastels : ${pastel}</p>`;
+            vlmpastel.innerHTML = `<p>Preço Total: ${valorpastel} Reais</p>`;
         }
         function pizzas() {
             pizza++;
             valorpizza = valorpizza + 9.00;
             qtdpizza.innerHTML = `<p>Quantidade de Pizzas : ${pizza}</p>`;
-            vlmpizza.innerHTML = `<p>PREÇO Total: ${valorpizza} R$ Reais</p>`;
+            vlmpizza.innerHTML = `<p>PREÇO Total: ${valorpizza} Reais</p>`;
         }
 
-
+        function menospizzas() {
+            pizza--;
+            valorpizza = valorpizza - 9.00;
+            qtdpizza.innerHTML = `<p>Quantidade de Pizzas : ${pizza}</p>`;
+            vlmpizza.innerHTML = `<p>PREÇO Total: ${valorpizza} Reais</p>`;
+        }
 
         function result() {
-
-            resultado.innerHTML = `<p>O Resultado dos seus pedidos foi: ${somatorio}</p>`;
+            var somatorio = Number(valorbatata + valorhamburge + valorpastel + valorpizza + valorcoxinha);
+            resultado.innerHTML = `<p>O Resultado dos seus pedidos foi: ${somatorio} Reais</p>`;
+            let garcondobem = document.getElementById('garcondobem');
+            garcondobem = garcondobem.style.display = "block";
         }
 
-
+        function pagamento() {
+            var somatorio = Number(valorbatata + valorhamburge + valorpastel + valorpizza + valorcoxinha);
+            var formapagamento = window.prompt('Escolha a forma de Pagamento + "\n" + 1® A Vista   "\n" + 2® Cartão de credito (Acrescimento de 2 Reais) "\n" + 3® Cartão de Debito (acrescimento de 1 real) ')
+        if (formapagamento == 1){
+            alert(`Voce me deve ${somatorio}!  Muito obrigado Volte Sempre`);
+        }
+        else if (formapagamento == 2){
+            somatorio = somatorio +2;
+            alert(`Voce me deve ${somatorio}!  Muito obrigado Volte Sempre`);
+        }
+        else if (formapagamento == 3){
+            somatorio = somatorio + 1;
+            alert(`Voce me deve ${somatorio}! Muito obrigado Volte Sempre`);
+        }
+        else {
+            alert(`Opção Invalida`);
+        }
+        }
 
 
 
